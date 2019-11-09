@@ -8,5 +8,6 @@ To setup, clone the repository then run:
 ```
 git clone https://github.com/TheGradientGroup/
 cd memorai-backend
+cd functions
 npm install
 ```
