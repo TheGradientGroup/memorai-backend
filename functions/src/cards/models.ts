@@ -3,6 +3,9 @@
  */
 interface Flashcard {
 
+  /**
+   * A unique idenfitier for this flashcard.
+   */
   uid: string;
 
   /**
@@ -15,7 +18,7 @@ interface Flashcard {
    * 
    * Either a string or 
    */
-  value: String | URL;
+  value: string | URL;
 
   /**
    * The type of content this card holds.
@@ -25,7 +28,7 @@ interface Flashcard {
   /**
    * The user ID of this card's owner.
    */
-  owner: String;
+  owner: string;
 }
 
 /**
