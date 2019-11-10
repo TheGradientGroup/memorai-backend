@@ -59,9 +59,10 @@ async function handleCardsGet(request: Request, response: Response) {
     const cardId = body.card;
     try {
       const card = await getCard(cardId);
-      if (card.owner != owner) {
-        checkAuthorization
+      if (card.owner !== owner) {
+        response.status(403).send({ 'message': 'User is not authorized to get this card.' });
       }
+      response.status(200).json(card);
     } catch (e) {
       console.error(e);
       sendServerError(response);
@@ -338,7 +339,7 @@ async function handleDeckDelete(request: Request, response: Response) {
       return;
     }
     if (!('deckId' in request.body)) {
-      response.status(400).send({'message': 'Delete request must have deckId body parameter' });
+      response.status(400).send({ 'message': 'Delete request must have deckId body parameter' });
     }
     const deckId = request.body.deckId;
     await deleteDeck(deckId, userId);
