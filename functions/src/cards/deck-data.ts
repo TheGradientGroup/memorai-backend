@@ -1,7 +1,8 @@
 import * as admin from 'firebase-admin';
-import { ensureFirebaseInitialized } from '../utils';
+import { FlashcardCreationData } from './card-data';
+import * as utils from '../utils';
 
-ensureFirebaseInitialized();
+utils.ensureFirebaseInitialized();
 
 const PATH_DECKS = '/decks';
 
@@ -63,9 +64,9 @@ export interface CreateDeckRequest {
   description: string;
 
   /**
-   * The cards contained within this set.
+   * Cards used to initialize this set.
    */
-  cards: Array<Flashcard>;
+  cards: Array<FlashcardCreationData>;
 
   /**
    * The user ID of this flashcard set's owner.

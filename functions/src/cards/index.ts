@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import * as express from 'express';
+import * as cors from 'cors';
 import * as bodyParser from 'body-parser';
 import { addCard, getCard, getCards, deleteCard, FlashcardCreationData, updateCard, FlashcardUpdateData } from './card-data';
 import { verifyToken } from '../auth';
@@ -14,7 +15,9 @@ const SUPPORTED_METHODS = ['GET', 'POST', 'UPDATE', 'DELETE'];
 export const handleCards = express();
 export const handleDecks = express();
 
+handleCards.use(cors());
 handleCards.use(bodyParser.json())
+handleDecks.use(cors());
 handleDecks.use(bodyParser.json())
 
 handleCards.use(PATH_CARDS, (request, response, next) => {

@@ -1,6 +1,6 @@
 import * as admin from 'firebase-admin';
 import { ensureFirebaseInitialized } from '../utils';
-import { StudySession, StudySessionCard } from './models';
+import { StudySession } from './models';
 
 const PATH_SESSIONS = '/sessions';
 
@@ -51,6 +51,8 @@ async function addSession(session: StudySessionCreationData): Promise<StudySessi
     await ref.update('uid', cardId);
     const newCard = await ref.get();
     // Convert session.cardsStudied into data and persist that
+
+
     return newCard.data() as StudySession;
   } catch (e) {
     throw e;

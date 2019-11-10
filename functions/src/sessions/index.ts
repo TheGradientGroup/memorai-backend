@@ -110,6 +110,7 @@ async function handleSessionsDelete(request: Request, response: Response) {
 
   if (!('sessionId' in request.body)) {
     response.status(400).send({ 'message': 'sessionId not provided' });
+    return;
   }
   let userId;
   try {

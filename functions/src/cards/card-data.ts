@@ -1,8 +1,9 @@
 import * as admin from 'firebase-admin';
-import { ensureFirebaseInitialized } from '../utils';
+import * as utils from '../utils';
+
+utils.ensureFirebaseInitialized();
 const PATH_CARDS = '/cards';
 
-ensureFirebaseInitialized();
 
 const cards = admin.firestore().collection(PATH_CARDS);
 
@@ -16,7 +17,6 @@ export interface FlashcardCreationData {
   owner: string;
   deck: string;
 }
-
 
 /**
  * Data used to update an existing flashcard.
