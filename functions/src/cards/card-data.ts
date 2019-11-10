@@ -85,6 +85,9 @@ async function updateCard(card: FlashcardUpdateData) {
 /**
  * Delete a flashcard from the database.
  *
+ * This also verifies that the deleted card belongs to the given user
+ * before it is deleted.
+ *
  * @param {string} cardId The ID of the flashcard to delete
  * @param {string} ownerId The ID of the owner's flashcard
  * TODO: Throw error if the card doesn't belong to user
