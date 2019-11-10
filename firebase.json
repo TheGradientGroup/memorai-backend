@@ -19,6 +19,10 @@
       {
         "source": "/decks",
         "function": "decks"
+      },
+      {
+        "sessions": "/sessions",
+        "function": "sessions"
       }
     ]
   },
