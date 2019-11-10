@@ -91,11 +91,21 @@ export async function createDeck(deck: CreateDeckRequest) {
 /**
  * Deletes a deck from the database.
  *
+ * This also verifies that the deleted card belongs to the given user
+ * before it is deleted.
+ *
  * @param {string} deckId The ID of the deck to delete
+ * @param {string} ownerId The ID of the owner's flashcard
  */
-export async function deleteDeck(deckId: string) {
+export async function deleteDeck(deckId: string, ownerId: string) {
   try {
+    const deck = await getDeckById(deckId);
+    if (deck.owner !== ownerId) {
+      // Nope.
+      return
+    }
     await decks.doc(deckId).delete();
+    // TODO: Actually delete all cards in deck based on ID
   } catch (e) {
     throw e;
   }
