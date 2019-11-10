@@ -13,10 +13,12 @@ jobs:
     - uses: actions/checkout@v1
     - name: Use Node.js
       uses: actions/setup-node@v1
-    - name: Build and deploy
+    - name: Build
+      working-directory: ./functions
       run: |
-        cd functions
         npm ci
+        npm run build
         npm run deploy
       env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         CI: true
