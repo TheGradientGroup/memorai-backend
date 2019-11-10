@@ -17,8 +17,6 @@ jobs:
       run: |
         cd functions
         npm ci
-        npm run lint
-        npm run build:ci --if-present
         npm run deploy
       env:
         CI: true
