@@ -76,8 +76,7 @@ async function getCards(owner: String): Promise<Array<Flashcard>> {
  */
 async function updateCard(card: FlashcardUpdateData) {
   try {
-    await cards.doc(card.uid)
-      .update(card);
+    await cards.doc(card.uid).update(card);
   } catch (e) {
     throw e;
   }
@@ -86,11 +85,18 @@ async function updateCard(card: FlashcardUpdateData) {
 /**
  * Delete a flashcard from the database.
  *
- * @param id The ID of the flashcard to delete
+ * @param {string} cardId The ID of the flashcard to delete
+ * @param {string} ownerId The ID of the owner's flashcard
+ * TODO: Throw error if the card doesn't belong to user
  */
-async function deleteCard(id: string) {
+async function deleteCard(cardId: string, ownerId: string) {
   try {
-    await cards.doc(id).delete();
+    const card = await getCard(cardId);
+    if (card.owner !== ownerId) {
+      // Nope.
+      return
+    }
+    await cards.doc(cardId).delete();
     // TODO: Trigger a recalcuation of models that contain this card
   } catch (e) {
     throw e;
