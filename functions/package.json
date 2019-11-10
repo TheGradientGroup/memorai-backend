@@ -1,13 +1,13 @@
 {
   "name": "memorai-backend",
   "scripts": {
-    "lint": "tslint --project tsconfig.json",
-    "build": "tsc",
+    "lint": "./node_modules/.bin/tslint -p tslint.json --project tsconfig.json",
+    "build": "./node_modules/.bin/tsc",
     "serve": "npm run build && firebase serve --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
-    "deploy": "firebase deploy --only functions",
-    "deploy:ci": "firebase deploy --only functions --token $FIREBASE_TOKEN",
+    "deploy": "./node_modules/.bin/firebase deploy --only functions",
+    "deploy:ci": "./node_modules/.bin/firebase deploy --only functions --token $FIREBASE_TOKEN",
     "logs": "firebase functions:log"
   },
   "engines": {
@@ -24,8 +24,8 @@
   "devDependencies": {
     "@types/request": "^2.48.3",
     "firebase-functions-test": "^0.1.6",
-    "tslint": "^5.12.0",
-    "typescript": "^3.2.2"
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.2"
   },
   "private": true
 }
