@@ -14,15 +14,11 @@
     "rewrites": [
       {
         "source": "/cards",
-        "function": "handleCards"
+        "function": "cards"
       },
       {
-        "source": "/predict",
-        "function": "handlePrediction"
-      },
-      {
-        "source": "/train",
-        "function": "handleTrain"
+        "source": "/decks",
+        "function": "decks"
       }
     ]
   },
