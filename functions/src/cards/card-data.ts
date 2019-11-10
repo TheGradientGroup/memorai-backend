@@ -1,6 +1,8 @@
 import * as admin from 'firebase-admin';
-
+import { ensureFirebaseInitialized } from '../utils';
 const PATH_CARDS = '/cards';
+
+ensureFirebaseInitialized();
 
 const cards = admin.firestore().collection(PATH_CARDS);
 

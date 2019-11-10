@@ -1,4 +1,7 @@
 import * as admin from 'firebase-admin';
+import { ensureFirebaseInitialized } from '../utils';
+
+ensureFirebaseInitialized();
 
 const PATH_DECKS = '/decks';
 

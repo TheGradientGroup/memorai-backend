@@ -1,6 +1,7 @@
 import * as admin from 'firebase-admin';
+import { ensureFirebaseInitialized } from './utils';
 
-admin.initializeApp();
+ensureFirebaseInitialized();
 
 /**
  * Checks if an auth token is valid.
