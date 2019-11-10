@@ -13,12 +13,13 @@ admin.initializeApp();
  * @return {Promise<string>} Promise that resolve to the user ID from the
  * given token. 
  */
-export async function verifyToken(token: string): Promise<String> {
+export async function verifyToken(token: string): Promise<string> {
   try {
     const decodedToken = await admin.auth().verifyIdToken(token);
     const uid = decodedToken.uid;
     return uid;
   } catch (e) {
+    // TODO: Abstract Firebase away from this
     throw e;
   }
 }
